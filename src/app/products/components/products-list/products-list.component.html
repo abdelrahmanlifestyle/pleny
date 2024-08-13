@@ -13,3 +13,12 @@
     *ngFor="let product of products.products"
     [product]="product"></app-product-card>
 </div>
+
+
+<div class="pagination">
+  <app-pagination
+    (pageChange)="onPageChange.emit($event)"
+    [currentPage]="currentPage"
+    [totalPages]="calculateTotalPages() ">
+  </app-pagination>
+</div>

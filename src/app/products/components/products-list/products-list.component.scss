@@ -7,7 +7,7 @@
     line-height: 16.94px;
     text-align: left;
   }
-  
+
   .header {
     display: flex;
     margin-bottom: 20px;
@@ -21,5 +21,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
   }
 }

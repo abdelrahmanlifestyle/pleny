@@ -10,6 +10,7 @@ import {ProductsEffects} from "./store/products.effect";
 import {CategoriesComponent} from './components/categories/categories.component';
 import {ProductsListComponent} from './components/products-list/products-list.component';
 import {ProductCardComponent} from './components/product-card/product-card.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {ProductCardComponent} from './components/product-card/product-card.compo
     ProductsRoutingModule,
     StoreModule.forFeature({name: "product", reducer: productsReducer}),
     EffectsModule.forFeature([ProductsEffects]),
-    NgOptimizedImage
+    NgOptimizedImage,
+    SharedModule
   ]
 })
 export class ProductsModule {

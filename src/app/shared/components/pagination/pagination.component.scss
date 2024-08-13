@@ -1,0 +1,33 @@
+.pagination-container {
+  display: flex;
+  align-items: center;
+
+  .page-nav, button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    margin: 0 0.2rem;
+    border-radius: 4px;
+    color: #333;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &.active {
+      background-color: #41CCCC; /* Similar to the teal color in the image */
+      color: white;
+    }
+
+    &.ellipsis {
+      cursor: default;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: #bbb;
+      background-color: #f5f5f5;
+    }
+  }
+}

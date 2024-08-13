@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {PaginationComponent} from './components/pagination/pagination.component';
 
 const MODULES = [
   CommonModule,
@@ -10,12 +11,18 @@ const MODULES = [
   NgOptimizedImage
 ];
 
+
+const COMPONENTS = [PaginationComponent];
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    ...COMPONENTS
+  ],
   imports: [
     ...MODULES
   ], exports: [
-    ...MODULES
+    ...MODULES,
+    ...COMPONENTS
   ]
 })
 export class SharedModule {
