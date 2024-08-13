@@ -6,12 +6,16 @@ import {Observable} from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private authUrl = 'https://dummyjson.com/auth/login';
+  private authUrl = 'https://dummyjson.com/auth/';
 
   constructor(private http: HttpClient) {
   }
 
   login(username: string, password: string): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(this.authUrl, {username, password});
+    return this.http.post<{ token: string }>(`${this.authUrl}login`, {username, password});
+  }
+
+  refreshToken(refreshToken: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.authUrl}refresh`, {refreshToken});
   }
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AuthService} from "../../core/services/auth.service";
 import {Router} from "@angular/router";
-import {login} from "./auth.actions";
+import {login, refreshToken} from "./auth.actions";
 import {selectIsLoggedIn, selectToken} from "./auth.selectors";
 
 @Injectable({
@@ -18,5 +18,10 @@ export class AuthFacadeService {
 
   login(email: string, password: string): void {
     this.store.dispatch(login({email, password}));
+  }
+
+  handleTokenExpiration() {
+    const token = localStorage.getItem("token") || '';
+    this.store.dispatch(refreshToken({token}));
   }
 }

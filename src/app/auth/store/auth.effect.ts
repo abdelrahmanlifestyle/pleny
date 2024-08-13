@@ -13,16 +13,20 @@ export class AuthEffects {
       ofType(AuthActions.login),
       exhaustMap(action =>
         this.authService.login(action.email, action.password).pipe(
-          map(({token}) => {
-            console.log("submitted")
-            localStorage.setItem('token', token);
-            this.router.navigate(['/products']).then()
-            return AuthActions.loginSuccess({token})
-          }),
-          catchError(error => {
-            alert('Login failed. Please try again.');
-            return of(AuthActions.loginFailure({error}))
-          })
+          map(({token}) => this.setNewToken(token)),
+          catchError(error => this.handleError(error))
+        )
+      )
+    )
+  );
+
+
+  refreshToken$ = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.refreshToken),
+      exhaustMap(action =>
+        this.authService.refreshToken(action.token).pipe(
+          map(({token}) => this.setNewToken(token)),
+          catchError(error => this.handleError(error))
         )
       )
     )
@@ -33,5 +37,16 @@ export class AuthEffects {
     private router: Router,
     private authService: AuthService
   ) {
+  }
+
+  setNewToken(token: string) {
+    localStorage.setItem('token', token);
+    this.router.navigate(['/products']).then()
+    return AuthActions.loginSuccess({token})
+  }
+
+  handleError(error: any) {
+    alert('Login failed. Please try again.');
+    return of(AuthActions.loginFailure({error}))
   }
 }
