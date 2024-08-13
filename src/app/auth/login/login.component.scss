@@ -67,6 +67,12 @@ p {
       &:hover {
         background-color: #35A7A7;
       }
+
+      &:disabled {
+        background-color: #A3D2D2; /* Lighter and desaturated version of the hover color */
+        cursor: not-allowed;
+
+      }
     }
   }
 }
