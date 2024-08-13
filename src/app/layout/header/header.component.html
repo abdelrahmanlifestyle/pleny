@@ -3,7 +3,7 @@
     <img alt="logo" height="38" ngSrc="assets/images/Logomark.svg" width="38">
     ClickTik
   </div>
-  <div class="home">Home</div>
+  <div class="home pointer">Home</div>
 </div>
 <div class="second-section">
   <ng-container *ngIf="!(authFacade.isLoggedIn$ | async)">
@@ -14,10 +14,10 @@
       <img alt="search" class="card" height="38" ngSrc="assets/images/round-search-24px.svg" width="24">
       <input placeholder="search">
     </div>
-    <div class="cart-container">
+    <div class="cart-container pointer">
       <img alt="cart" class="card" height="38" ngSrc="assets/images/Cart.svg" width="38">
       <p *ngIf="count" class="count"><span>{{ count }}</span></p>
     </div>
-    <div *ngIf="(authFacade.selectUser$ | async) as user">{{ user.firstName }} {{ user.lastName }}</div>
+    <div *ngIf="(authFacade.selectUser$ | async) as user" class="pointer">{{ user.firstName }} {{ user.lastName }}</div>
   </ng-container>
 </div>
