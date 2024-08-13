@@ -1,4 +1,5 @@
 import {createAction, props} from '@ngrx/store';
+import {User} from "../../core/interfaces/user";
 
 export const login = createAction(
   '[Auth] Login',
@@ -10,8 +11,18 @@ export const refreshToken = createAction(
   props<{ token: string }>()
 );
 
+export const getUser = createAction(
+  '[Auth] get user',
+  props<{ token: string }>()
+);
+
 export const loginSuccess = createAction(
   '[Auth] Login Success',
+  props<{ user: User }>()
+);
+
+export const updateToken = createAction(
+  '[Auth] update token',
   props<{ token: string }>()
 );
 

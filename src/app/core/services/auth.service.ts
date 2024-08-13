@@ -20,4 +20,8 @@ export class AuthService {
   refreshToken(refreshToken: string): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${this.authUrl}refresh`, {refreshToken});
   }
+
+  getUser(token: string): Observable<User> {
+    return this.http.get<User>(`${this.authUrl}me`)
+  }
 }

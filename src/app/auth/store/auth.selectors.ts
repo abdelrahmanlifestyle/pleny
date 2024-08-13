@@ -8,6 +8,11 @@ export const selectToken = createSelector(
   (state: AuthState) => state.token
 );
 
+export const selectUser = createSelector(
+  selectAuthState,
+  (state: AuthState) => state.user
+);
+
 export const selectIsLoggedIn = createSelector(
   selectAuthState,
   (state: AuthState) => !!state.token
