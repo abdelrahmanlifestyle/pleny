@@ -7,7 +7,6 @@ import {
   loadCategoriesFailure,
   loadCategoriesSuccess,
   loadProducts,
-  loadProductsById,
   loadProductsFailure,
   loadProductsSuccess
 } from './products.actions';
@@ -16,42 +15,38 @@ import {ProductsDataService} from "../services/products-data.service";
 @Injectable()
 export class ProductsEffects {
 
-  loadAllProducts$ = createEffect(() =>
+  loadProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadProducts),
-      switchMap(() =>
-        this.productsDataService.loadAllProducts().pipe(
-          map(products => loadProductsSuccess({products})),
-          catchError(error => of(loadProductsFailure({error})))
-        )
-      )
-    )
-  );
-
-  loadProductsById$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(loadProductsById),
-      switchMap(({id}) =>
-        this.productsDataService.loadProductsByCategory(id).pipe(
-          map(products => loadProductsSuccess({products})),
-          catchError(error => of(loadProductsFailure({error})))
-        )
-      )
+      switchMap(({id}) => this.loadProductsByIdOrAll(id))
     )
   );
 
   loadCategories$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadCategories),
-      switchMap(() =>
-        this.productsDataService.loadCategories().pipe(
-          map(categories => loadCategoriesSuccess({categories})),
-          catchError(error => of(loadCategoriesFailure({error})))
-        )
-      )
+      switchMap(() => this.loadCategories())
     )
   );
 
   constructor(private actions$: Actions, private productsDataService: ProductsDataService) {
+  }
+
+  private loadCategories() {
+    return this.productsDataService.loadCategories().pipe(
+      map(categories => loadCategoriesSuccess({categories})),
+      catchError(error => of(loadCategoriesFailure({error})))
+    );
+  }
+
+  private loadProductsByIdOrAll(id: string | null) {
+    const loadProducts$ = id
+      ? this.productsDataService.loadProductsByCategory(id)
+      : this.productsDataService.loadAllProducts();
+
+    return loadProducts$.pipe(
+      map(products => loadProductsSuccess({products})),
+      catchError(error => of(loadProductsFailure({error})))
+    );
   }
 }

@@ -19,7 +19,8 @@ export class ProductsFacadeService {
     this.store.dispatch(loadCategories());
   }
 
-  loadProducts() {
-    this.store.dispatch(loadProducts());
+  loadProducts(id: string | null): void {
+    this.store.dispatch(loadProducts({id}));
   }
+
 }

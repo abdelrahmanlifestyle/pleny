@@ -11,9 +11,8 @@ export const loadCategoriesFailure = createAction(
   props<{ error: any }>()
 );
 
-export const loadProducts = createAction('[Products] Load Products');
-export const loadProductsById = createAction('[Products] Load Products',
-  props<{ id: string }>());
+export const loadProducts = createAction('[Products] Load Products',
+  props<{ id: string | null }>());
 export const loadProductsSuccess = createAction(
   '[Products] Load Products Success',
   props<{ products: Product[] }>()

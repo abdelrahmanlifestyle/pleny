@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productsFacadeService.loadProducts();
+    this.productsFacadeService.loadProducts(null);
     this.productsFacadeService.loadCategories();
   }
 
