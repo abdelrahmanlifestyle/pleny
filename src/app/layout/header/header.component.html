@@ -10,8 +10,14 @@
     <div>Log in</div>
   </ng-container>
   <ng-container *ngIf="authFacade.isLoggedIn$ | async">
-    <div>search</div>
-    <div>card</div>
-    <div>Account</div>
+    <div class="search-container">
+      <img alt="search" class="card" height="38" ngSrc="assets/images/round-search-24px.svg" width="24">
+      <input placeholder="search">
+    </div>
+    <div class="cart-container">
+      <img alt="cart" class="card" height="38" ngSrc="assets/images/Cart.svg" width="38">
+      <p *ngIf="count" class="count"><span>{{ count }}</span></p>
+    </div>
+    <div *ngIf="(authFacade.selectUser$ | async) as user">{{ user.firstName }} {{ user.lastName }}</div>
   </ng-container>
 </div>

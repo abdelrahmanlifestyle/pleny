@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  count = 3;
 
   constructor(public authFacade: AuthFacadeService, public router: Router) {
   }
