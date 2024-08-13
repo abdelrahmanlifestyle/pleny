@@ -1,0 +1,19 @@
+<div class="login-container">
+  <img alt="logo" height="38" ngSrc="assets/images/Logomark.svg" width="38">
+  <h2>Log in to your account</h2>
+  <p>Welcome back! Please enter your details.</p>
+
+  <form (submit)="onSubmit()">
+    <p>
+      Email
+    </p>
+    <input [(ngModel)]="email" name="email" placeholder="Enter your email" required
+           type="text"/>
+    <p>
+      Password
+    </p>
+    <input [(ngModel)]="password" name="password" placeholder="Enter your password" required
+           type="password"/>
+    <button type="submit">Sign in</button>
+  </form>
+</div>

@@ -1,0 +1,72 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 38px;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #667085;
+}
+
+.login-container {
+  max-width: 360px;
+  margin: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    max-width: 48px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    input {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    p {
+      width: 100%;
+      text-align: start;
+      color: #344054;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    button {
+      padding: 0.5rem;
+      border: none;
+      background-color: #41CCCC;
+      color: #344054;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #35A7A7;
+      }
+    }
+  }
+}

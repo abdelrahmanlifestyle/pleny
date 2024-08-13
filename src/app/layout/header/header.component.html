@@ -1,0 +1,17 @@
+<div class="first-section">
+  <div class="logo-container">
+    <img alt="logo" height="38" ngSrc="assets/images/Logomark.svg" width="38">
+    ClickTik
+  </div>
+  <div class="home">Home</div>
+</div>
+<div class="second-section">
+  <ng-container *ngIf="!(authFacade.isLoggedIn$ | async)">
+    <div>Log in</div>
+  </ng-container>
+  <ng-container *ngIf="authFacade.isLoggedIn$ | async">
+    <div>search</div>
+    <div>card</div>
+    <div>Account</div>
+  </ng-container>
+</div>
