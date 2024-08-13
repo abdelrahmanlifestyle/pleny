@@ -20,7 +20,13 @@ export class AuthFacadeService {
   }
 
   handleTokenExpiration() {
-    const token = localStorage.getItem("token") || '';
-    this.store.dispatch(refreshToken({token}));
+    try {
+      const token = JSON.parse(localStorage.getItem('user') || '')?.refreshToken;
+      this.store.dispatch(refreshToken({token}));
+    } catch (error) {
+      console.error(error)
+      localStorage.clear();
+      this.router.navigate(['/auth']).then();
+    }
   }
 }
