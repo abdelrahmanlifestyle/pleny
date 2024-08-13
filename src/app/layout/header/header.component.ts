@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthFacadeService} from "../../auth/services/auth-facade.service";
-import {Router} from "@angular/router";
+import {CartService} from "../../products/services/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -8,8 +8,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  count = 3;
 
-  constructor(public authFacade: AuthFacadeService, public router: Router) {
+  constructor(
+    public authFacade: AuthFacadeService,
+    public cartService: CartService) {
   }
 }

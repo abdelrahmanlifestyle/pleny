@@ -16,7 +16,7 @@
     </div>
     <div class="cart-container pointer">
       <img alt="cart" class="card" height="38" ngSrc="assets/images/Cart.svg" width="38">
-      <p *ngIf="count" class="count"><span>{{ count }}</span></p>
+      <p *ngIf="(cartService.count$ | async) as count" class="count"><span>{{ count }}</span></p>
     </div>
     <div *ngIf="(authFacade.selectUser$ | async) as user" class="pointer">{{ user.firstName }} {{ user.lastName }}</div>
   </ng-container>
