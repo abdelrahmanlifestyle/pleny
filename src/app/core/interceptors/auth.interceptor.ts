@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {AuthFacadeService} from "../../auth/store/auth-facade.service";
+import {AuthFacadeService} from "../../auth/services/auth-facade.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

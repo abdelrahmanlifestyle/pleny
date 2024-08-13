@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthFacadeService} from "../store/auth-facade.service";
+import {AuthFacadeService} from "../services/auth-facade.service";
 import {filter, take} from "rxjs";
 import {Router} from "@angular/router";
 

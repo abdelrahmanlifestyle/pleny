@@ -2,24 +2,24 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, exhaustMap, map} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {AuthService} from '../../core/services/auth.service';
+import {AuthDataService} from '../services/auth-data.service';
 import * as AuthActions from './auth.actions';
 import {of} from 'rxjs';
-import {User} from "../../core/interfaces/user";
+import {User} from "../../shared/interfaces/user";
 
 @Injectable()
 export class AuthEffects {
 
   login$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.login),
-    exhaustMap(action => this.authService.login(action.email, action.password).pipe(
+    exhaustMap(action => this.authDataService.login(action.email, action.password).pipe(
       map(response => this.handleLoginSuccess(response)),
       catchError(error => this.handleError(error))
     ))
   ));
   refreshToken$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.refreshToken),
-    exhaustMap(action => this.authService.refreshToken(action.token).pipe(
+    exhaustMap(action => this.authDataService.refreshToken(action.token).pipe(
       map(response => this.handleUpdateToken(response.token)),
       catchError(error => this.handleError(error, true))
     ))
@@ -33,7 +33,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private router: Router,
-    private authService: AuthService
+    private authDataService: AuthDataService
   ) {
   }
 

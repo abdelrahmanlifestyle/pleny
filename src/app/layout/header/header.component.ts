@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthFacadeService} from "../../auth/store/auth-facade.service";
+import {AuthFacadeService} from "../../auth/services/auth-facade.service";
 import {Router} from "@angular/router";
 
 @Component({

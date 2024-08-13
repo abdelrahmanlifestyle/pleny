@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import {loginSuccess, logout, updateToken} from './auth.actions';
-import {User} from "../../core/interfaces/user";
+import {User} from "../../shared/interfaces/user";
 
 export interface AuthState {
   token: string | null;
