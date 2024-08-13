@@ -1,1 +1,17 @@
-<p>products works!</p>
+<p class="header">
+  iPhone
+</p>
+
+<div class="breadcrumbs">
+  Home / Products / Smart Phones / <span class="selected-cat">iPhone</span>
+</div>
+
+<div class="container">
+  <app-categories
+    (onSelectCategory)="onSelectCategory($event)"
+    [categories]="(productsFacadeService.categories$ | async) || []"></app-categories>
+  <app-products-list
+    (onAddToCard)="onAddToCard($event)"
+    [products]="(productsFacadeService.products$ | async) || productsFacadeService.initialProductsPage"
+  ></app-products-list>
+</div>

@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Category, Product} from "../../shared/interfaces/product";
+import {Category, ProductsPage} from "../../shared/interfaces/product";
 
 export const loadCategories = createAction('[Product] Load Categories');
 export const loadCategoriesSuccess = createAction(
@@ -15,7 +15,7 @@ export const loadProducts = createAction('[Products] Load Products',
   props<{ id: string | null }>());
 export const loadProductsSuccess = createAction(
   '[Products] Load Products Success',
-  props<{ products: Product[] }>()
+  props<{ productsPage: ProductsPage }>()
 );
 export const loadProductsFailure = createAction(
   '[Products] Load Products Failure',

@@ -6,17 +6,26 @@ import {
   loadProductsFailure,
   loadProductsSuccess
 } from './products.actions';
-import {Category, Product} from "../../shared/interfaces/product";
+import {Category, ProductsPage} from "../../shared/interfaces/product";
 
 export interface ProductsState {
-  products: Product[];
+  productsPage: ProductsPage;
   categories: Category[];
+  selectedCategory: string | null;
   loading: boolean;
+  searchTerm: string,
   error: any;
 }
 
 export const initialState: ProductsState = {
-  products: [],
+  productsPage: {
+    products: [],
+    limit: 30,
+    skip: 0,
+    total: 0
+  },
+  selectedCategory: null,
+  searchTerm: '',
   categories: [],
   loading: false,
   error: null
@@ -28,9 +37,9 @@ export const productsReducer = createReducer(
     ...state,
     loading: true
   })),
-  on(loadProductsSuccess, (state, {products}) => ({
+  on(loadProductsSuccess, (state, {productsPage}) => ({
     ...state,
-    products,
+    productsPage,
     loading: false
   })),
   on(loadProductsFailure, (state, {error}) => ({

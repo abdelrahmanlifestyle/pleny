@@ -1,0 +1,10 @@
+<h2>Categories</h2>
+<div>
+  <input (change)="onSelectCategory.emit($event)" [value]="null" checked id="all" name="category" type="radio">
+  <label class="cat-name" for="all">All</label>
+</div>
+<div *ngFor="let category of categories">
+  <input (change)="onSelectCategory.emit($event)" [id]="category.slug" [value]="category.slug" name="category"
+         type="radio">
+  <label [for]="category.slug" class="cat-name">{{ category.name }}</label>
+</div>

@@ -1,0 +1,25 @@
+:host {
+  flex: 1;
+
+  .sort-by {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.94px;
+    text-align: left;
+  }
+  
+  .header {
+    display: flex;
+    margin-bottom: 20px;
+
+    .total {
+      flex: 1;
+    }
+  }
+
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

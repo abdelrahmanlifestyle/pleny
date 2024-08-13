@@ -45,7 +45,7 @@ export class ProductsEffects {
       : this.productsDataService.loadAllProducts();
 
     return loadProducts$.pipe(
-      map(products => loadProductsSuccess({products})),
+      map(productsPage => loadProductsSuccess({productsPage})),
       catchError(error => of(loadProductsFailure({error})))
     );
   }

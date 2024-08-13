@@ -1,0 +1,42 @@
+<span class="discount">
+  - {{ product.discountPercentage }} %
+</span>
+<img [alt]="product.title " [src]="product.thumbnail" class="logo"/>
+<div class="details">
+  <p class="title">{{ product.title }}</p>
+  <p class="description">{{ product.description }}</p>
+
+  <div class="price">
+    <span class="old">
+      <strong>
+      {{ product.price }}
+      </strong>
+      USD
+    </span>
+    <span class="new">
+      <strong>
+      {{ product.price * (100 - product.discountPercentage) / 100 |  number:'1.2-2' }}
+      </strong>
+      USD
+    </span>
+  </div>
+  <div>
+    <p class="type-container">
+      <span class="type">Brand: </span> <strong class="value">{{ product.brand }}</strong>
+    </p>
+    <p class="type-container">
+      <span class="type">Category: </span> <strong class="value">{{ product.category }}</strong>
+    </p>
+    <p class="type-container">
+      <span class="type">In stock: </span> <strong class="value">{{ product.stock }}</strong>
+    </p>
+
+    <div class="rating">
+      <img [ngSrc]="'assets/images/Star%2015.svg'" alt="rating" height="16" width="16">
+      <span class="value">{{ product.rating }}</span>
+      <span class="amount">({{ product.reviews.length }})</span>
+    </div>
+
+    <button (click)="onAddToCard.emit(product)" class="pointer">ADD TO CARD</button>
+  </div>
+</div>

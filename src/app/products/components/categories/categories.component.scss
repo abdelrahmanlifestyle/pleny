@@ -1,0 +1,28 @@
+:host {
+  color: #1E1E1E;
+  font-family: Open Sans, sans-serif;
+  padding: 30px;
+  border: 0.5px solid #42424280;
+  border-radius: 8px;
+  height: fit-content;
+
+  input {
+    margin: 5px;
+  }
+
+  .cat-name {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+  }
+
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21.79px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+}

@@ -24,6 +24,14 @@ export interface Product {
 }
 
 
+export interface ProductsPage {
+  total: number,
+  skip: number,
+  limit: number,
+  products: Product[]
+}
+
+
 export interface Category {
   slug: string,
   name: string,

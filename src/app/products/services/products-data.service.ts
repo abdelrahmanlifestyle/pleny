@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Category, Product} from "../../shared/interfaces/product";
+import {Category, ProductsPage} from "../../shared/interfaces/product";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,8 @@ export class ProductsDataService {
 
 
   loadAllProducts() {
-    return this.http.get<Product[]>(this.apiUrl)
+    // this.http.get('https://dummyjson.com/products/search?q=phone&sort=price&category=smartphones').subscribe(console.log)
+    return this.http.get<ProductsPage>(this.apiUrl)
   }
 
   loadCategories() {
@@ -23,7 +24,7 @@ export class ProductsDataService {
   }
 
   loadProductsByCategory(categoryId: string) {
-    return this.http.get<Product[]>(`${this.apiUrl}/category/${categoryId}`)
+    return this.http.get<ProductsPage>(`${this.apiUrl}/category/${categoryId}`)
   }
 
 }
