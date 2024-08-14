@@ -3,7 +3,11 @@
   <div>
     <p>
       <span class="sort-by">Sort By: </span>
-      <span>Popularity</span>
+      <select (change)="handleOnSortChange($event)">
+        <option value="popularity">Popularity</option>
+        <option value="price">Price</option>
+        <option value="title">Title</option>
+      </select>
     </p>
   </div>
 </div>

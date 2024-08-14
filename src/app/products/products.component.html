@@ -2,8 +2,10 @@
   iPhone
 </p>
 
-<div class="breadcrumbs">
-  Home / Products / Smart Phones / <span class="selected-cat">iPhone</span>
+<div *ngIf="productsFacadeService.filter$ | async as filter" class="breadcrumbs">
+  Home / Products /
+  <span *ngIf="selectedCategory">{{ selectedCategory }} /</span>
+  <span class="selected-cat">{{ filter.search }}</span>
 </div>
 
 <div class="container">
@@ -12,6 +14,8 @@
     [categories]="(productsFacadeService.categories$ | async) || []"></app-categories>
   <app-products-list
     (onAddToCard)="onAddToCard($event)"
+    (onPageChange)="onPageChange($event)"
+    (onSortChange)="onSort($event)"
     [products]="(productsFacadeService.products$ | async) || productsFacadeService.initialProductsPage"
   ></app-products-list>
 </div>

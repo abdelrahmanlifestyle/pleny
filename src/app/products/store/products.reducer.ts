@@ -11,9 +11,13 @@ import {Category, ProductsPage} from "../../shared/interfaces/product";
 export interface ProductsState {
   productsPage: ProductsPage;
   categories: Category[];
-  selectedCategory: string | null;
+  filter: {
+    skip: number,
+    search: string,
+    sort: string,
+    selectedCategory: string | null;
+  }
   loading: boolean;
-  searchTerm: string,
   error: any;
 }
 
@@ -24,8 +28,12 @@ export const initialState: ProductsState = {
     skip: 0,
     total: 0
   },
-  selectedCategory: null,
-  searchTerm: '',
+  filter: {
+    skip: 0,
+    selectedCategory: null,
+    search: '',
+    sort: '',
+  },
   categories: [],
   loading: false,
   error: null
@@ -33,8 +41,12 @@ export const initialState: ProductsState = {
 
 export const productsReducer = createReducer(
   initialState,
-  on(loadProducts, (state) => ({
+  on(loadProducts, (state, params) => ({
     ...state,
+    filter: {
+      ...state.filter,
+      ...params
+    },
     loading: true
   })),
   on(loadProductsSuccess, (state, {productsPage}) => ({

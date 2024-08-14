@@ -13,9 +13,12 @@ export class ProductsDataService {
   }
 
 
-  loadAllProducts() {
-    // this.http.get('https://dummyjson.com/products/search?q=phone&sort=price&category=smartphones').subscribe(console.log)
-    return this.http.get<ProductsPage>(this.apiUrl)
+  loadAllProducts(
+    sort = 'title',
+    search = '',
+    skip = 0,
+  ) {
+    return this.http.get<ProductsPage>(`${this.apiUrl}/search?q=${search}&limit=30&skip=${skip}&sortBy=${sort}&order=asc`)
   }
 
   loadCategories() {
@@ -23,8 +26,13 @@ export class ProductsDataService {
 
   }
 
-  loadProductsByCategory(categoryId: string) {
-    return this.http.get<ProductsPage>(`${this.apiUrl}/category/${categoryId}`)
+  loadProductsByCategory(
+    categoryId: string,
+    sort = 'title',
+    search = '',
+    skip = 0,
+  ) {
+    return this.http.get<ProductsPage>(`${this.apiUrl}/category/${categoryId}?search?q=${search}&limit=30&skip=${skip}&sortBy=${sort}&order=asc`)
   }
 
 }

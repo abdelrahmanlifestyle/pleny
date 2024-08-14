@@ -11,12 +11,19 @@ export class ProductsListComponent {
   @Input() products!: ProductsPage;
   @Output() onAddToCard = new EventEmitter<Product>();
   @Output() onPageChange = new EventEmitter<number>();
+  @Output() onSortChange = new EventEmitter<string>();
 
 
   calculateTotalPages(): number {
-    if (this.products && this.products.total && this.products.limit) {
-      return Math.ceil(this.products.total / this.products.limit);
+    if (this.products && this.products.total) {
+      return Math.ceil(this.products.total / 30);
     }
     return 0;
+  }
+
+  handleOnSortChange(e: any) {
+    const selectElement = e.target as HTMLSelectElement;
+    const selectedValue = selectElement.value;
+    this.onSortChange.emit(selectedValue)
   }
 }

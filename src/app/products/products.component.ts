@@ -11,6 +11,7 @@ import {CartService} from "./services/cart.service";
 export class ProductsComponent implements OnInit {
 
   count = 0;
+  selectedCategory: string = '';
 
   constructor(
     protected productsFacadeService: ProductsFacadeService,
@@ -20,17 +21,29 @@ export class ProductsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.productsFacadeService.loadProducts(null);
+    this.productsFacadeService.loadProducts({});
     this.productsFacadeService.loadCategories();
+    this.productsFacadeService.productsState$.subscribe(state => {
+      this.selectedCategory = state.categories.find(c => c.slug === state.filter.selectedCategory)!.name;
+    })
   }
 
+
   onSelectCategory($event: any) {
-    this.productsFacadeService.loadProducts($event.target.value);
+    this.productsFacadeService.loadProducts({selectedCategory: $event.target.value || ''});
   }
 
 
   onAddToCard(product: Product) {
     this.count++;
     this.cartService.count$.next(this.count)
+  }
+
+  onSort($event: string) {
+    this.productsFacadeService.loadProducts({sort: $event});
+  }
+
+  onPageChange($event: number) {
+    this.productsFacadeService.loadProducts({skip: ($event - 1) * 30});
   }
 }

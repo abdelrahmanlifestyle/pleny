@@ -12,7 +12,12 @@ export const loadCategoriesFailure = createAction(
 );
 
 export const loadProducts = createAction('[Products] Load Products',
-  props<{ id: string | null }>());
+  props<{
+    selectedCategory?: string,
+    skip?: number,
+    search?: string,
+    sort?: string,
+  }>());
 export const loadProductsSuccess = createAction(
   '[Products] Load Products Success',
   props<{ productsPage: ProductsPage }>()

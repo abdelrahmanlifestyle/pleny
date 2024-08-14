@@ -12,7 +12,7 @@
   <ng-container *ngIf="authFacade.isLoggedIn$ | async">
     <div class="search-container">
       <img alt="search" class="card" height="24" ngSrc="assets/images/round-search-24px.svg" width="24">
-      <input placeholder="search">
+      <input (input)="onSearch($event)" placeholder="search">
     </div>
     <div class="cart-container pointer">
       <img alt="cart" class="card" height="38" ngSrc="assets/images/Cart.svg" width="38">
