@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
     this.productsFacadeService.loadProducts({});
     this.productsFacadeService.loadCategories();
     this.productsFacadeService.productsState$.subscribe(state => {
-      this.selectedCategory = state.categories.find(c => c.slug === state.filter.selectedCategory)!.name;
+      this.selectedCategory = state.categories.find(c => c.slug === state.filter.selectedCategory)?.name || '';
     })
   }
 
